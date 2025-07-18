@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
-#define MAX 100
 #define LEN 50
 #define FILE_PATH "contacts.txt"
 
@@ -12,58 +12,74 @@ typedef struct {
 
 void addContact() {
     Contact c;
-    printf("Enter name: ");
-    scanf(" %[^\n]", c.name);
-    printf("Enter phone: ");
-    scanf(" %[^\n]", c.phone);
+    printf("Enter name: ");  scanf(" %[^\n]", c.name);
+    printf("Enter phone: "); scanf(" %[^\n]", c.phone);
 
     FILE *f = fopen(FILE_PATH, "a");
     if (!f) { perror("File"); return; }
     fprintf(f, "%s,%s\n", c.name, c.phone);
     fclose(f);
-    printf("Contact added.\n");
 }
 
-int loadContacts(Contact c[]) {
+void listContacts(char filter) {
     FILE *f = fopen(FILE_PATH, "r");
-    if (!f) { perror("File"); return 0; }
-    int n = 0;
-    while (fscanf(f, " %[^,],%[^\n]", c[n].name, c[n].phone) == 2 && n < MAX) n++;
-    fclose(f);
-    return n;
-}
+    if (!f) { perror("File"); return; }
 
-void printContacts(Contact c[], int n, char filter) {
-    int found = 0, s = 1;
-    for (int i = 0; i < n; i++) {
-        char ch = c[i].name[0];
-        if (!filter || ch == filter || ch == (filter ^ 32)) {
-            printf("%d. Name : %s\n   Phone: %s\n\n", s++, c[i].name, c[i].phone);
+    char name[LEN], phone[LEN];
+    int count = 1, found = 0;
+    fseek(f, 0, SEEK_SET);  // reset pointer
+
+    while (fscanf(f, " %[^,],%[^\n]", name, phone) == 2) {
+        if (!filter || tolower(name[0]) == tolower(filter)) {
+            printf("%d. %s - %s\n", count++, name, phone);
             found = 1;
         }
     }
-    if (filter && !found) printf("No contacts found starting with '%c'\n", filter);
+
+    if (filter && !found)
+        printf("No contacts starting with '%c'.\n", filter);
+
+    fclose(f);
+}
+
+void findContact() {
+    char search[LEN], name[LEN], phone[LEN];
+    printf("Enter name to find: ");
+    scanf(" %[^\n]", search);
+
+    FILE *f = fopen(FILE_PATH, "r");
+    if (!f) { perror("File"); return; }
+
+    fseek(f, 0, SEEK_SET);  // seek to start
+    while (fscanf(f, " %[^,],%[^\n]", name, phone) == 2) {
+        if (strcasecmp(name, search) == 0) {
+            printf("Found: %s - %s\n", name, phone);
+            fclose(f);
+            return;
+        }
+    }
+
+    printf("Contact not found.\n");
+    fclose(f);
 }
 
 int main() {
-    int opt;
-    Contact book[MAX];
+    int choice;
+    char ch;
 
     do {
-        printf("\n1. Add\n2. List All\n3. List by Letter\n4. Exit\nChoice: ");
-        scanf("%d", &opt);
+        printf("\n1. Add\n2. List All\n3. List by Letter\n4. Find\n5. Exit\nChoice: ");
+        scanf("%d", &choice);
 
-        if (opt == 1) addContact();
-        else if (opt == 2 || opt == 3) {
-            int n = loadContacts(book);
-            char letter = 0;
-            if (opt == 3) {
-                printf("Enter letter: ");
-                scanf(" %c", &letter);
-            }
-            printContacts(book, n, letter);
-        } else if (opt != 4) printf("Invalid option.\n");
-    } while (opt != 4);
+        switch (choice) {
+            case 1: addContact(); break;
+            case 2: listContacts(0); break;
+            case 3: printf("Enter letter: "); scanf(" %c", &ch); listContacts(ch); break;
+            case 4: findContact(); break;
+            case 5: break;
+            default: printf("Invalid option.\n");
+        }
+    } while (choice != 5);
 
     return 0;
 }
