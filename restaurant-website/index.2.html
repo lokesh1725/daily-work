@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">      
+  <title>Cocktail</title>
+  <link rel="stylesheet" href="style.2.css">
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="logo">THE RESTO BAR</div>
+    <ul class="menu-icons">
+      <li><a href="about.html">About</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <div class="hero">
+    <img src="cocktail.jpg" alt="Cocktail Image">
+    <div class="centered-text">
+      <h1>CRAFT COCKTAILS</h1>
+      <p><b>Our mixologists create signature drinks using premium spirits and fresh ingredients.</b></p>
+      <div class="buttons">
+        <a href="#reservation">Make a Reservation</a>
+        <a href="menu.html">View Our Menu</a>
+      </div>
+  </div>
+</div>
+<div id="Our story" class="content-section story">
+  <div class="story-text">
+    <h2>Our Story</h2>
+    <p>At The Resto Bar, we blend artistry and flavor to craft unforgettable cocktails in a warm, inviting atmosphere.
+      <br>Our skilled mixologists use the finest spirits, fresh ingredients, and creative flair to deliver drinks that delight the senses,
+      making every visit a memorable and flavorful experience worth savoring.
+    </p>
+  </div>
+  
+  
+  <img src="foodserving.jpg" alt="Food Serving"> <!-- This is the image on the right -->
+</div>
+<!-- Our Gallery Section -->
+<section class="gallery-section">
+  <h2>Our Gallery</h2>
+  <p class="gallery-desc">
+    Step inside The Spot through our gallery and get a taste of our inviting atmosphere, exquisite cuisine, and handcrafted cocktails.
+  </p>
+  
+  <div class="gallery-filters">
+    <button class="active">All</button>
+    <button>Interior</button>
+    <button>Food</button>
+    <button>Drinks</button>
+  </div>
+  <img src="cocktailcollege.jpg" alt="cocktailcollege">
+  </div>
+</section>
+
+<section class="events-section">
+<h2>Upcoming Events & Contact & Reservation</h2>
+<p class="events-desc">
+  From live music nights to cooking classes and wine tastings, there's always something exciting happening at The Resto Bar.  
+  Check our calendar and join us!
+</p>
+
+<div class="events-container">
+  <!-- Calendar -->
+  <div class="calendar-box">
+    <h3>📅 Event Calendar</h3>
+    <p class="calendar-sub">Select an upcoming date to see scheduled events</p>
+    <div class="calendar">
+      <div class="calendar-header">
+        <button class="nav-btn" id="prevMonth">‹</button>
+        <div class="month" id="currentMonth">May 2025</div>
+        <button class="nav-btn" id="nextMonth">›</button>
+      </div>
+      <div class="weekdays">
+        <div>Su</div><div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div>
+      </div>
+      <div class="days" id="calendarDays">
+        <!-- Days will be generated dynamically -->
+      </div>
+    </div>
+    <div class="selected-date" id="selectedDate" style="display: none;">
+      <p>Selected: <span id="selectedDateText"></span></p>
+    </div>
+  </div>
+
+  <section class="contact-reservations">
+    <div class="container">
+        <!-- Left Side: Info -->
+        <div class="info-section">
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>📍 Location</h3>
+                    <p>123 Main Street<br>New York, NY 10001</p>
+                </div>
+                <div class="info-card">
+                    <h3>⏰ Hours</h3>
+                    <p>Mon-Thu: 11am - 11pm<br>Fri-Sat: 11am - 1am<br>Sun: 10am - 10pm</p>
+                </div>
+                <div class="info-card">
+                    <h3>📞 Phone</h3>
+                    <p>7339176558<br>For reservations & inquiries</p>
+                </div>
+                <div class="info-card">
+                    <h3>✉️ Email</h3>
+                    <p>kabilanhusbendofjanavi@gmail.com<br>We'll respond within 24 hours</p>
+                </div>
+            </div>
+
+            <div class="map-card">
+                <iframe 
+                    src="location.png" 
+                    width="100%" 
+                    height="200" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+
+        <!-- Right Side: Reservation Form -->
+        <div class="reservation-card" id="reservation">
+            <h2>Make a Reservation</h2>
+            <form>
+                <div class="form-row">
+                    <input type="text" placeholder="Name" required>
+                    <input type="email" placeholder="Email" required>
+                </div>
+                <div class="form-row">
+                    <input type="text" placeholder="Phone" required>
+                    <select required>
+                        <option value="">Number of Guests</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3+</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <input type="date" id="reservationDate" required>
+                    <select id="reservationTime" required>
+                        <option value="">Select Time</option>
+                        <option value="3:00 PM">3:00 PM</option>
+                        <option value="3:30 PM">3:30 PM</option>
+                        <option value="4:00 PM">4:00 PM</option>
+                        <option value="4:30 PM">4:30 PM</option>
+                        <option value="5:00 PM">5:00 PM</option>
+                        <option value="5:30 PM">5:30 PM</option>
+                        <option value="6:00 PM">6:00 PM</option>
+                        <option value="6:30 PM">6:30 PM</option>
+                        <option value="7:00 PM">7:00 PM</option>
+                        <option value="7:30 PM">7:30 PM</option>
+                        <option value="8:00 PM">8:00 PM</option>
+                        <option value="8:30 PM">8:30 PM</option>
+                        <option value="9:00 PM">9:00 PM</option>
+                        <option value="9:30 PM">9:30 PM</option>
+                        <option value="10:00 PM">10:00 PM</option>
+                        <option value="10:30 PM">10:30 PM</option>
+                        <option value="11:00 PM">11:00 PM</option>
+                        <option value="11:30 PM">11:30 PM</option>
+                        <option value="12:00 AM">12:00 AM</option>
+                    </select>
+                </div>
+                <textarea placeholder="Special Requests"></textarea>
+                <button type="submit">Request Reservation</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script>
+// BEGINNER-FRIENDLY CALENDAR CODE
+// This code makes a calendar that customers can use to pick dates
+
+// Wait for the webpage to load completely
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // STEP 1: Set up basic things we need
+    
+    // List of month names (0=January, 1=February, etc.)
+    var months = ['January', 'February', 'March', 'April', 'May', 'June',
+                  'July', 'August', 'September', 'October', 'November', 'December'];
+    
+    // Variables to remember things
+    var today = new Date();           // What day is today?
+    var currentMonth = today.getMonth();  // What month are we showing?
+    var currentYear = today.getFullYear(); // What year are we showing?
+    var pickedDate = null;            // What date did user pick?
+    
+    // Find the calendar parts in the HTML
+    var monthTitle = document.getElementById('currentMonth');
+    var daysArea = document.getElementById('calendarDays');
+    var backButton = document.getElementById('prevMonth');
+    var forwardButton = document.getElementById('nextMonth');
+    var selectedArea = document.getElementById('selectedDate');
+    var selectedText = document.getElementById('selectedDateText');
+    
+    // STEP 2: Function to build the calendar
+    function buildCalendar() {
+        // Show which month and year we're looking at
+        monthTitle.textContent = months[currentMonth] + ' ' + currentYear;
+        
+        // Clear out old calendar days
+        daysArea.innerHTML = '';
+        
+        // Figure out calendar math
+        var firstDayOfMonth = new Date(currentYear, currentMonth, 1);
+        var lastDayOfMonth = new Date(currentYear, currentMonth + 1, 0);
+        var whatDayWeekStarts = firstDayOfMonth.getDay(); // 0=Sunday, 1=Monday, etc.
+        var howManyDaysInMonth = lastDayOfMonth.getDate();
+        
+        // Add empty boxes for days before month starts
+        for (var i = 0; i < whatDayWeekStarts; i++) {
+            var emptyBox = document.createElement('div');
+            daysArea.appendChild(emptyBox);
+        }
+        
+        // Add all the days of the month
+        for (var dayNumber = 1; dayNumber <= howManyDaysInMonth; dayNumber++) {
+            var dayBox = document.createElement('div');
+            dayBox.textContent = dayNumber;
+            dayBox.className = 'calendar-day';
+            
+            // Figure out what date this day box represents
+            var thisDay = new Date(currentYear, currentMonth, dayNumber);
+            
+            // Is this day in the past? If so, make it gray and unclickable
+            if (thisDay < today) {
+                dayBox.className += ' past-date';
+                dayBox.style.opacity = '0.4';
+                dayBox.style.cursor = 'not-allowed';
+            } else {
+                // This day is in the future - make it clickable
+                dayBox.onclick = function() {
+                    pickThisDate(thisDay, dayBox);
+                };
+                
+                // Make it light up when mouse hovers over it
+                dayBox.onmouseenter = function() {
+                    this.className += ' active';
+                };
+                dayBox.onmouseleave = function() {
+                    this.className = this.className.replace(' active', '');
+                };
+            }
+            
+            // Is this today? Make it blue
+            if (thisDay.getTime() === today.getTime()) {
+                dayBox.className += ' today';
+            }
+            
+            // Add this day to the calendar
+            daysArea.appendChild(dayBox);
+        }
+    }
+    
+    // STEP 3: Function when user clicks a date
+    function pickThisDate(dateClicked, boxClicked) {
+        // Remove yellow highlight from all days
+        var allDays = document.querySelectorAll('.calendar-day');
+        for (var i = 0; i < allDays.length; i++) {
+            allDays[i].className = allDays[i].className.replace(' selected', '');
+        }
+        
+        // Make the clicked day yellow
+        boxClicked.className += ' selected';
+        
+        // Remember which date was picked
+        pickedDate = dateClicked;
+        
+        // Show the picked date in nice words
+        var niceDate = dateClicked.toLocaleDateString('en-US', { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        });
+        selectedText.textContent = niceDate;
+        selectedArea.style.display = 'block';
+        
+        // Put this date in the reservation form
+        putDateInForm(dateClicked);
+    }
+    
+    // STEP 4: Function to put date in reservation form
+    function putDateInForm(dateToUse) {
+        var formDateBox = document.getElementById('reservationDate');
+        if (formDateBox) {
+            // Convert date to format the form needs (YYYY-MM-DD)
+            var year = dateToUse.getFullYear();
+            var month = dateToUse.getMonth() + 1;
+            var day = dateToUse.getDate();
+            
+            // Add zeros if needed (like 01 instead of 1)
+            if (month < 10) month = '0' + month;
+            if (day < 10) day = '0' + day;
+            
+            var formattedDate = year + '-' + month + '-' + day;
+            
+            // Put the date in the form
+            formDateBox.value = formattedDate;
+            
+            // Make the form box glow yellow
+            formDateBox.style.borderColor = '#ffc107';
+            formDateBox.style.boxShadow = '0 0 5px rgba(255, 193, 7, 0.5)';
+            
+            // Scroll down to show the form and highlight it
+            document.querySelector('.reservation-card').scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'center' 
+            });
+            
+            // Add visual feedback to the entire reservation card
+            var reservationCard = document.querySelector('.reservation-card');
+            reservationCard.style.border = '3px solid #ffc107';
+            reservationCard.style.boxShadow = '0 0 15px rgba(255, 193, 7, 0.3)';
+            
+            // Remove the glow after 4 seconds
+            setTimeout(function() {
+                formDateBox.style.borderColor = '#333';
+                formDateBox.style.boxShadow = 'none';
+                reservationCard.style.border = '1px solid #222';
+                reservationCard.style.boxShadow = 'none';
+            }, 4000);
+        }
+    }
+    
+    // STEP 5: Make the back and forward buttons work
+    backButton.onclick = function() {
+        // Can we go back a month?
+        if (currentMonth > today.getMonth() || currentYear > today.getFullYear()) {
+            currentMonth = currentMonth - 1;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear = currentYear - 1;
+            }
+            buildCalendar();
+        }
+    };
+    
+    forwardButton.onclick = function() {
+        // Go forward a month
+        currentMonth = currentMonth + 1;
+        if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear = currentYear + 1;
+        }
+        buildCalendar();
+    };
+    
+    // STEP 6: Start the calendar when page loads
+    buildCalendar();
+});
+</script>
+
+</body>
+</html>

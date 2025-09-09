@@ -1,0 +1,315 @@
+/* CONTACT PAGE STYLES - Easy to understand CSS */
+
+/* Basic page setup */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #111;
+  color: white;
+}
+
+/* Navigation bar styles */
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 15px 40px;
+  z-index: 1000;
+  gap: 60px;
+}
+
+.navbar .logo {
+  font-size: 32px;
+  font-weight: bolder;
+}
+
+.menu-icons {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-icons li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.4);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.menu-icons li a:hover,
+.menu-icons li a.active {
+  background-color: #ffc107;
+  color: black;
+}
+
+/* Hero section styles */
+.hero-section {
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('foodserving.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 80px;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.hero-content p {
+  font-size: 20px;
+  color: white;
+}
+
+/* Main content styles */
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 40px;
+}
+
+/* Contact section styles */
+.contact-section {
+  margin-bottom: 60px;
+}
+
+.contact-section h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: #ffc107;
+  border-bottom: 2px solid #ffc107;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+/* Contact grid styles */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.contact-card {
+  background: #1a1a1a;
+  padding: 25px;
+  border-radius: 10px;
+  text-align: center;
+  border-left: 4px solid #ffc107;
+}
+
+.contact-card h3 {
+  color: #ffc107;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.contact-card p {
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Map section styles */
+.map-section {
+  margin-bottom: 60px;
+}
+
+.map-section h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: #ffc107;
+  border-bottom: 2px solid #ffc107;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.map-container {
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.map-image {
+  max-width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Form section styles */
+.form-section {
+  margin-bottom: 60px;
+}
+
+.form-section h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: #ffc107;
+  border-bottom: 2px solid #ffc107;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.contact-form {
+  background: #1a1a1a;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  flex: 1;
+  padding: 12px;
+  border: 2px solid #333;
+  border-radius: 5px;
+  background: #111;
+  color: white;
+  font-size: 16px;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #ffc107;
+}
+
+.contact-form textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-form button {
+  width: 100%;
+  background: #ffc107;
+  color: black;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+  background: #ffdb4d;
+}
+
+/* Reservation link section */
+.reservation-link {
+  background: #1a1a1a;
+  padding: 40px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.reservation-link h2 {
+  color: #ffc107;
+  margin-bottom: 15px;
+}
+
+.reservation-link p {
+  margin-bottom: 25px;
+  font-size: 18px;
+}
+
+.reservation-button {
+  display: inline-block;
+  background: #ffc107;
+  color: black;
+  padding: 15px 30px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 18px;
+  transition: background-color 0.3s;
+}
+
+.reservation-button:hover {
+  background: #ffdb4d;
+}
+
+/* Back button styles */
+.back-button {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.back-button a {
+  display: inline-block;
+  background: #ffc107;
+  color: black;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.back-button a:hover {
+  background: #ffdb4d;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 20px;
+    padding: 15px 20px;
+  }
+  
+  .hero-content h1 {
+    font-size: 36px;
+  }
+  
+  .main-content {
+    padding: 40px 20px;
+  }
+  
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-row {
+    flex-direction: column;
+  }
+  
+  .contact-form {
+    padding: 20px;
+  }
+}

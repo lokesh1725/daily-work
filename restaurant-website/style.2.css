@@ -1,0 +1,609 @@
+/* Scroll enabled */
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Navbar Like title about option */
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: transparent;
+  color: white;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 15px 40px;
+  z-index: 1000;
+  gap: 60px;
+}
+
+
+.navbar .logo {
+  font-size: 32px; /*THE RESTO BAR font size*/
+  font-weight:bolder; /*THE RESTO BAR font style*/
+}
+
+/* Menu: positioned to the left after logo */
+.menu-icons {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-icons li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  padding: 8px 14px;
+  border-radius: 8px; /*menu bar border*/
+  background-color: rgba(0, 0, 0, 0.4); /* button-style background */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.menu-icons li a:hover {
+  background-color: #eeb60e;
+  color: black;
+}
+
+/* main screen  section */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero img {
+  width: 100%;/*cocktail iamge*/
+  height: 100%;
+  object-fit: cover;
+}
+
+/* CRAFT COCKTAILS name */
+.centered-text {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translateY(-50%);
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  max-width: 500px;
+}
+
+.centered-text h1 {
+  font-size: 48px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.centered-text p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 20px;
+  margin-bottom: 0;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*            Content section for scrolling */
+.content-section {
+  height: 100vh;
+  padding: 60px;
+  background-color: #111;
+  color: white;
+}
+/*command for Make a Reservation & View Our Menu*/
+.buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+  justify-content: center;
+}
+
+.buttons a {
+  text-decoration: none;
+  background-color: white;
+  color: black;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  display: inline-block;
+}
+
+.buttons a:hover {
+  background-color: #ffd207;
+  color: black;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/*scroll the screen */
+html {
+  scroll-behavior: smooth;
+}
+  body, html {
+    overflow-y: auto;
+  }
+.content-section {
+  scroll-margin-top: 1000px; /*  height for scroll */
+}
+#Our\ story h2 {
+  display: inline-block;
+  border-bottom: 3px solid white; /* white  underline below the our story title */
+  padding-bottom: 5px;
+}
+/* Our Story layout */
+.story {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 70px;
+
+}
+
+.story img {
+  width: 650px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+ 
+}
+/* Gallery Section */
+.gallery-section {
+  background-color: #111; /* Dark background for contrast */
+  color: white;
+  text-align: center;
+  padding-top:  0px; /* Space inside the section */
+ padding-top: 0px;
+}
+
+.gallery-section h2 {
+  font-size: 38px; /* Big title text */
+  margin-bottom: 12px;  /* Space below the heading */
+}
+
+.gallery-desc {
+  max-width: 600px; /*our gallery below content size*/
+  margin: 0 auto 40px;
+  font-size: 16px;
+  color: #ccc;  /* Lighter gray text */
+}
+
+.gallery-filters {
+  display: flex;/* Arrange filter buttons in a row */
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 50px;
+}
+
+.gallery-filters button {
+  padding: 8px 16px;
+  border: none;
+  background: #222;
+  color: white;
+  border-radius: 7px;
+  cursor: pointer;
+  transition:  0.3s;
+}
+
+
+.gallery-filters button:hover {
+  background: #ffc107;
+  color: black;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(2px, 1fr));
+  gap: 15px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.gallery-grid img:hover {
+  transform: scale(2.05);
+}
+
+.story-text {
+  flex: 1;
+}
+
+.story-text p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) { /* can we adjust the size upto 768px using @media*/
+  .story {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .story img {
+    width: 200%;
+  }
+}
+/* for calender*/
+body {
+  background-color: #111;
+  color: white;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.events-section { /*Section Layout*/
+  text-align: center;
+  padding-top: 60px ;
+}
+
+.events-section h2 { /*Headings & Description for Upcoming Events & Contact & Reservation*/
+  font-size: 32px;
+  margin-top: 0px;
+  
+}
+.previous-section {
+  margin-bottom: 0; /* Reduce gap from the section above */
+  padding-bottom: 0;
+  min-height:auto;
+}
+
+.events-desc  /*Headings & Description*/
+{
+ 
+  max-width: 600px;    /*Description*/
+  margin: 0 auto 20px;
+  font-size: 16px;
+  color: #ccc;
+}
+
+.events-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.calendar-box, .event-details {    /*Calendar & Event Details Boxes*/
+  background: #1c1c1c;
+  padding: 30px;
+  border-radius: 10px;
+  flex: 1 1 300px;
+  max-width: 450px;
+}
+
+.calendar-box h3 {
+  margin-bottom: 3px;
+}
+
+.calendar-sub {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.calendar { /*Calendar Styling*/
+  background: #111;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.nav-btn {
+  background: #ffc107;
+  color: black;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: #ffdb4d;
+  transform: scale(1.1);
+}
+
+.nav-btn:disabled {
+  background: #555;
+  color: #888;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.month {
+  font-weight: bold;
+  margin-bottom: 0px;
+  font-size: 16px;
+  min-width: 120px;
+  text-align: center;
+}
+
+.weekdays, .days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.weekdays div {
+  text-align: center;
+  font-weight: bold;
+  color: #bbb;
+}
+
+.days div {   
+  text-align: center;
+  padding: 8px;
+  background: #222;
+  border-radius: 4px;
+  cursor: pointer; /* Makes them clickable */
+  transition: background 0.3s;
+}
+
+.calendar-day {
+  text-align: center;
+  padding: 8px;
+  background: #222;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.calendar-day:hover {
+  background: #ffc107;
+  color: black;
+  transform: scale(1.05);
+}
+
+.calendar-day.active {
+  background: #ffc107;
+  color: black;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(255, 193, 7, 0.4);
+}
+
+.calendar-day.selected {
+  background: #ffc107;
+  color: black;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(255, 193, 7, 0.4);
+}
+
+.calendar-day.today {
+  background: #0066cc;
+  color: white;
+  font-weight: bold;
+}
+
+.calendar-day.today:hover {
+  background: #0080ff;
+  color: white;
+}
+
+.calendar-day.past-date {
+  background: #333 !important;
+  color: #666 !important;
+  cursor: not-allowed !important;
+}
+
+.empty-day {
+  background: transparent !important;
+  cursor: default !important;
+}
+
+.selected-date {
+  margin-top: 15px;
+  padding: 10px;
+  background: #1a1a1a;
+  border-radius: 6px;
+  border-left: 4px solid #ffc107;
+}
+
+.selected-date p {
+  margin: 0;
+  font-size: 14px;
+  color: #ffc107;
+  font-weight: 500;
+}
+
+.days div:hover {
+  background: #ffc107;  /*calender days avtive*/
+  color: black;
+}
+
+.days div.active {  /*. Active Day Highlight*/
+  background: #ffc107;
+  color: black;
+}
+
+.event-details h3 {
+  margin-bottom: 15px;
+}
+
+.event-card {
+  background: #222;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.event-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.event-card p {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.event-card small {
+  color: #888;
+}
+/* Calendar icon color */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(74%) sepia(87%) saturate(515%) hue-rotate(360deg) brightness(104%) contrast(103%);
+  cursor: pointer;
+}
+
+/* Time icon color */
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(74%) sepia(87%) saturate(515%) hue-rotate(360deg) brightness(104%) contrast(103%);
+  cursor: pointer;
+}
+
+.view-all-btn {   /*"View All" Button*/
+  margin-top: 30px;
+  background: #ffc107;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.view-all-btn:hover {
+  background: #ffdb4d;
+}
+body {
+  background-color: #111;
+  font-family: Arial, sans-serif;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.contact-reservations {
+  padding: 50px 0;
+}
+
+.container {
+  display: flex;
+  max-width: 1100px;
+  margin: auto;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* Left Info Section */
+.info-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.info-card {
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #222;
+}
+
+.info-card h3 {
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+
+.map-card iframe {
+  border-radius: 8px;
+}
+
+/* Right Reservation Form */
+.reservation-card {
+  flex: 1;
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #222;
+}
+
+.reservation-card h2 {
+  margin-bottom: 15px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+}
+
+input,
+select,
+textarea {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  background: #111;
+  color: white;
+}
+
+button {
+  background: white;
+  color: black;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #f0f0f0;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .container {
+      flex-direction: column;
+  }
+  .info-grid {
+      grid-template-columns: 1fr;
+  }
+}
