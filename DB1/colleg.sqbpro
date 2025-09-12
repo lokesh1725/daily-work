@@ -1,0 +1,91 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sqlite3.h>
+
+void ensure_schema(sqlite3 *db) {
+    const char *sql =
+        "CREATE TABLE IF NOT EXISTS people_tbl ("
+        "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+        "full_name TEXT NOT NULL,"
+        "phone TEXT,"
+        "email TEXT);";
+    char *errmsg = NULL;
+    if (sqlite3_exec(db, sql, NULL, NULL, &errmsg) != SQLITE_OK) {
+        fprintf(stderr, "DB Error: %s\n", errmsg);
+        sqlite3_free(errmsg);
+        exit(1);
+    }
+}
+
+void add_contact(sqlite3 *db) {
+    char name[100], phone[100], email[100];
+    printf("Full name: "); fgets(name, 100, stdin); name[strcspn(name, "\n")] = 0;
+    printf("Phone: "); fgets(phone, 100, stdin); phone[strcspn(phone, "\n")] = 0;
+    printf("Email: "); fgets(email, 100, stdin); email[strcspn(email, "\n")] = 0;
+
+    sqlite3_stmt *stmt;
+    sqlite3_prepare_v2(db,
+        "INSERT INTO people_tbl(full_name, phone, email) VALUES(?,?,?)",
+        -1, &stmt, NULL);
+    sqlite3_bind_text(stmt, 1, name, -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(stmt, 2, phone, -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(stmt, 3, email, -1, SQLITE_TRANSIENT);
+    sqlite3_step(stmt);
+    sqlite3_finalize(stmt);
+
+    printf("Contact added!\n");
+}
+
+void search_contacts(sqlite3 *db) {
+    char query[100];
+    printf("Search text: ");
+    fgets(query, 100, stdin); query[strcspn(query, "\n")] = 0;
+
+    sqlite3_stmt *stmt;
+    sqlite3_prepare_v2(db,
+        "SELECT id, full_name, phone, email FROM people_tbl "
+        "WHERE full_name LIKE ?1 OR phone LIKE ?1 OR email LIKE ?1 "
+        "LIMIT 10",
+        -1, &stmt, NULL);
+
+    char like[120];
+    sprintf(like, "%%%s%%", query);
+    sqlite3_bind_text(stmt, 1, like, -1, SQLITE_TRANSIENT);
+
+    while (sqlite3_step(stmt) == SQLITE_ROW) {
+        printf("[%d] %s | %s | %s\n",
+               sqlite3_column_int(stmt, 0),
+               sqlite3_column_text(stmt, 1),
+               sqlite3_column_text(stmt, 2),
+               sqlite3_column_text(stmt, 3));
+    }
+    sqlite3_finalize(stmt);
+}
+
+int main() {
+    sqlite3 *db;
+    if (sqlite3_open("people.db", &db)) {
+        fprintf(stderr, "Can't open DB\n");
+        return 1;
+    }
+    ensure_schema(db);
+
+    char choice[10];
+    while (1) {
+        printf("\n========= Contacts DB =========\n");
+        printf("1) Search contact\n");
+        printf("2) Add contact\n");
+        printf("3) Exit\n");
+        printf("Choose: ");
+        fgets(choice, 10, stdin);
+
+        if (choice[0] == '1') search_contacts(db);
+        else if (choice[0] == '2') add_contact(db);
+        else if (choice[0] == '3') { printf("Bye!\n"); break; }
+        else printf("Invalid choice.\n");
+    }
+
+    sqlite3_close(db);
+    return 0;
+}
