@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple React Project</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .app {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: #2d3436;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #74b9ff;
+        }
+
+        .button {
+            background: #74b9ff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .button:hover {
+            background: #0984e3;
+            transform: translateY(-2px);
+        }
+
+        .input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .input:focus {
+            outline: none;
+            border-color: #74b9ff;
+        }
+
+        .counter {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: bold;
+            color: #74b9ff;
+            margin: 20px 0;
+        }
+
+        .todo-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .todo-item:last-child {
+            border-bottom: none;
+        }
+
+        .todo-text {
+            flex: 1;
+            margin-left: 10px;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // Welcome Component
+        function Welcome() {
+            const [name, setName] = React.useState('');
+            
+            return (
+                <div className="card">
+                    <h3>👋 Welcome!</h3>
+                    <input
+                        className="input"
+                        type="text"
+                        placeholder="Enter your name..."
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                    <p>{name ? `Hello, ${name}! Welcome to React!` : 'Please enter your name above'}</p>
+                </div>
+            );
+        }
+
+        // Counter Component
+        function Counter() {
+            const [count, setCount] = React.useState(0);
+            
+            return (
+                <div className="card">
+                    <h3>🔢 Counter</h3>
+                    <div className="counter">{count}</div>
+                    <button className="button" onClick={() => setCount(count - 1)}>-</button>
+                    <button className="button" onClick={() => setCount(0)}>Reset</button>
+                    <button className="button" onClick={() => setCount(count + 1)}>+</button>
+                </div>
+            );
+        }
+
+        // Simple Todo Component
+        function TodoApp() {
+            const [todos, setTodos] = React.useState([
+                { id: 1, text: 'Learn React basics', completed: false },
+                { id: 2, text: 'Build a simple project', completed: true }
+            ]);
+            const [newTodo, setNewTodo] = React.useState('');
+
+            const addTodo = () => {
+                if (newTodo.trim()) {
+                    setTodos([...todos, {
+                        id: Date.now(),
+                        text: newTodo,
+                        completed: false
+                    }]);
+                    setNewTodo('');
+                }
+            };
+
+            const toggleTodo = (id) => {
+                setTodos(todos.map(todo =>
+                    todo.id === id ? { ...todo, completed: !todo.completed } : todo
+                ));
+            };
+
+            return (
+                <div className="card">
+                    <h3>✅ Todo List</h3>
+                    <input
+                        className="input"
+                        type="text"
+                        placeholder="Add a new todo..."
+                        value={newTodo}
+                        onChange={(e) => setNewTodo(e.target.value)}
+                        onKeyPress={(e) => e.key === 'Enter' && addTodo()}
+                    />
+                    <button className="button" onClick={addTodo}>Add Todo</button>
+                    
+                    <div style={{ marginTop: '20px' }}>
+                        {todos.map(todo => (
+                            <div key={todo.id} className="todo-item">
+                                <input
+                                    type="checkbox"
+                                    checked={todo.completed}
+                                    onChange={() => toggleTodo(todo.id)}
+                                />
+                                <span className={`todo-text ${todo.completed ? 'completed' : ''}`}>
+                                    {todo.text}
+                                </span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            );
+        }
+
+        // Main App Component
+        function App() {
+            return (
+                <div className="app">
+                    <div className="header">
+                        <h1>🚀 My React Project</h1>
+                        <p>A simple webpage built with React</p>
+                    </div>
+                    <div className="content">
+                        <Welcome />
+                        <Counter />
+                        <TodoApp />
+                    </div>
+                </div>
+            );
+        }
+
+        // Render the app
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
