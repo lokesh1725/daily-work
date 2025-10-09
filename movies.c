@@ -58,7 +58,7 @@ int main(void) {
             break;
 
         } else {
-            printf("⚠️ Invalid choice! Please enter 1 or 2.\n");
+            printf(" Invalid choice! Please enter 1 or 2.\n");
         }
     }
 
