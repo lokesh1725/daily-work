@@ -51,31 +51,59 @@ void insertData() {
     printf("Task added successfully!\n");
 }
 
-/* VIEW DATA */
+/* VIEW DATA (SHOW ROWID FOR DELETE) */
 void viewData() {
 
     sqlite3_stmt *stmt;
 
-    char sql[] = "SELECT * FROM todo;";
+    char sql[] = "SELECT rowid, * FROM todo;";
 
     sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 
-    printf("\nDATE | TASK | STATUS\n");
-    printf("-----------------------------------------\n");
+    printf("\nID | DATE        | STATUS     | TASK\n");
+    printf("--------------------------------------------------------------\n");
 
     while (sqlite3_step(stmt) == SQLITE_ROW) {
 
-        printf("%s | %s | %s\n",
-               sqlite3_column_text(stmt, 0),
-               sqlite3_column_text(stmt, 1),
-               sqlite3_column_text(stmt, 2));
+        int id = sqlite3_column_int(stmt, 0);
+        const unsigned char *date   = sqlite3_column_text(stmt, 1);
+        const unsigned char *task   = sqlite3_column_text(stmt, 2);
+        const unsigned char *status = sqlite3_column_text(stmt, 3);
+
+        printf("%-2d | %-10s | %-10s | %s\n",
+               id,
+               date,
+               status,
+               task);
+    }
+
+    sqlite3_finalize(stmt);
+}
+
+/* DELETE TASK USING ROWID */
+void deleteTask() {
+
+    sqlite3_stmt *stmt;
+    int id;
+
+    printf("Enter ID to delete: ");
+    scanf("%d", &id);
+
+    char sql[] = "DELETE FROM todo WHERE rowid = ?;";
+
+    sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+    sqlite3_bind_int(stmt, 1, id);
+
+    if (sqlite3_step(stmt) == SQLITE_DONE) {
+        printf("Task deleted successfully!\n");
+    } else {
+        printf("Failed to delete\n");
     }
 
     sqlite3_finalize(stmt);
 }
 
 /* MAIN FUNCTION */
-
 int main() {
 
     int choice;
@@ -92,7 +120,8 @@ int main() {
         printf("\n--- TODO MENU ---\n");
         printf("1. Add Task\n");
         printf("2. View Tasks\n");
-        printf("3. Exit\n");
+        printf("3. Delete Task\n");
+        printf("4. Exit\n");
 
         printf("Enter choice: ");
         scanf("%d", &choice);
@@ -104,6 +133,9 @@ int main() {
             viewData();
         }
         else if (choice == 3) {
+            deleteTask();
+        }
+        else if (choice == 4) {
             break;
         }
         else {
